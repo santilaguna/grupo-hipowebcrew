@@ -1,0 +1,73 @@
+
+<h2 class="form-header">Nuevo Alimento</h2>
+<%- include('_form') %>
+
+
+<script>
+    // As seen at: https://github.com/jquery-validation/jquery-validation
+
+    $('#button1').click(function(){             
+        $("#form_").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 3
+                },
+                calories: {
+                    required: true,
+                    min: 0
+                },
+                fat: {
+                    required: true,
+                    min: 0
+                },
+                cholesterol: {
+                    required: true,
+                    min: 0
+                },
+                sodium: {
+                    required: true,
+                    min: 0
+                },
+                carbohydrate: {
+                    required: true,
+                    min: 0
+                },
+                protein: {
+                    required: true,
+                    min: 0
+                }
+            },
+            messages: {
+                name: {
+                    required: "Por favor, ingresa un nombre",
+                    minlength: "El largo mínimo es 3"
+                },
+                calories: {
+                    required: "Por favor, ingresa la cantidad de calorías",
+                    min: "Rlly? la cantidad no puede ser negativa"
+                },
+                fat: {
+                    required: "Por favor, ingresa la cantidad de grasa",
+                    min: "Rlly? la cantidad no puede ser negativa"
+                },
+                cholesterol: {
+                    required: "Por favor, ingresa la cantidad de colesterol",
+                    min: "Rlly? la cantidad no puede ser negativa"
+                },
+                sodium: {
+                    required: "Por favor, ingresa la cantidad de sodio",
+                    min: "Rlly? la cantidad no puede ser negativa"
+                },
+                carbohydrate: {
+                    required: "Por favor, ingresa la cantidad de carbohidratos",
+                    min: "Rlly? la cantidad no puede ser negativa"
+                },
+                protein: {
+                    required: "Por favor, ingresa la cantidad de proteínas",
+                    min: "Rlly? la cantidad no puede ser negativa"
+                }
+            }
+        });
+    }); 
+</script>

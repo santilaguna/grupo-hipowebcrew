@@ -1,0 +1,33 @@
+<h2 class="form-header">Dietas</h2>
+<% if (!dietsList.length) { %>
+  <p>No results</p>
+<% } else { %>
+
+  <div class="grid-index">
+    <% let contador = 0 %>
+    <% let diet = 0 %>
+    <% dietsList.forEach((diet) => { %>
+      <div class="item">
+        <div>
+          <a href="<%- showDietPath(diet) %>">
+            <img class="item-image" href="<%- showDietPath(diet) %>" src='<%- imageRep[contador] %>'>
+          </a>
+        </div>
+        <div class="diet-text-box">
+          <a href="<%- showDietPath(diet) %>" class="item-text title-diet"><%- diet.name %></a>
+          <a href="<%- showDietPath(diet) %>" class="item-text">Creador: <%- diet.getUser().name %></a>
+          <a href="<%- showDietPath(diet) %>" class="item-text">Semanas de duración: <%- diet.weeks %></a>
+          <a href="<%- showDietPath(diet) %>" class="item-text">Observaciones:</a>
+          <a href="<%- showDietPath(diet) %>" class="item-text"><%- diet.observation %></a>
+        </div>
+      </div>
+      <% contador += 1 %>
+    <% }) %>
+  </div>
+<% } %>
+<br>
+
+<br>
+<% if (currentUser && currentUser.role === "specialist") { %>
+  <a class="button" href="<%- newDietPath %>">Nueva dieta</a>
+<% } %>

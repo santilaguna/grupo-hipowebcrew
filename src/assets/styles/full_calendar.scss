@@ -1,0 +1,22 @@
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import "~@fullcalendar/timegrid/main.css";
+
+.fc-day-grid-container.fc-scroller {
+    height: auto!important;
+    overflow-y: auto;
+}
+.color-0 {
+    background-color: green;
+}
+.color-1 {
+    background-color: lightblue;
+}
+
+.color-2 {
+    background-color: chocolate;
+}
+
+.color-3 {
+    background-color: mediumslateblue;
+}

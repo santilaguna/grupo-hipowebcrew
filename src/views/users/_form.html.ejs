@@ -1,0 +1,100 @@
+<% if (locals.errors) { %>
+  <div class="errors">
+      You need to fix the following errors:
+      <ul>
+        <% errors.forEach(error => { %>
+          <li><%= error.message %></li>
+        <% }); %>
+      </ul>
+  </div>
+<% } %>
+
+<form id="form1" action="<%= submitUserPath %>" method="post" enctype="multipart/form-data">
+    <% if (!user.isNewRecord) { %>
+      <input type="hidden" name="_method" value="patch" />
+    <% } %>
+<div class="form-container-v2">
+
+      <div class="foto">
+          <% if (user.isNewRecord) { %>
+            <img class="profile-pic" src="<%= assetPath('default-profile.jpg') %>">
+          <% } else { %>
+            <img class="profile-pic" src="<%= user.image%>">
+          <% } %>
+
+        <div class="name-tag">
+          <p>Acá puedes cambiar tu foto:</p>
+          <input type="file" name="image" value="<%= user.image %>" placeholder="<%= assetPath('default-profile.jpg') %>"/>
+          
+        </div>
+        
+      </div>
+
+      <div class="botones">
+        <div class="update">
+          <% if (user.isNewRecord) { %>
+            <input type="submit" name="create" value="Registrarse" id="button1"/>
+          <% } else { %>
+            <input type="submit" name="update" value="Actualizar" id="button1"/>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="fields">
+        
+        <div class="nombre">
+          <label for="username">Nombre de usuario</label>
+          <input type="text" name="username" value="<%= user.username %>" placeholder="Ingresa tu nombre..."/>
+          <% if (user.isNewRecord) { %>
+              <label for="email">Email</label>
+              <input type="email" name="email" value="<%= user.email %>" placeholder="Ingresa tu email..."/>
+          
+          <% } %>
+        </div>
+        <div class="contrasena">
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" value="<%= %>" placeholder="Ingresa tu nueva contraseña..." required/>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+<script>
+  // As seen at: https://github.com/jquery-validation/jquery-validation
+
+  $('#button1').click(function(){             
+      $("#form1").validate({
+          rules: {
+              username: {
+                  required: true,
+                  minlength: 3
+              },
+              email: {
+                  required: true,
+                  email: true
+              },
+              password: {
+                  required: true,
+                  minlength: 5
+              }
+          },
+          messages: {
+              username: {
+                  required: "Por favor, ingresa un nombre de usuario",
+                  minlength: "El largo mínimo es 3"
+              },
+              email: {
+                  required: "Por favor, ingresa un email",
+                  email: "Por favor, ingresa un email válido"
+              },
+              password: {
+                  required: "Por favor, ingresa una contraseña",
+                  minlength: "Tu contraseña actual es muy corta"
+              }
+          }
+      });
+  }); 
+</script>

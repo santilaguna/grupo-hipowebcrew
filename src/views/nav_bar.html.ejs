@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <nav>
+            <div class="logo">
+                <a href="/"><img src="<%= assetPath('LogoNutriCheap.png') %>" /> </a>
+            </div>
+            
+            <div class="login">
+                <div id="user-bar">
+                    <% if (currentUser) { %>
+                        <a href="<%= editUserPath %>"><%= currentUser.username %></a> 
+                        <% if (currentUser.role == "common") { %>
+                        <a href="<%= specialistPath %>">Ser especialista</a> 
+                        <% } %>
+                        <% if (currentUser.role == "specialist") { %>
+                            <a href="<%= revisionsPath %>">Ver solicitudes de especialista</a> 
+                        <% } %>
+                    <% } else { %>
+                        <a href="<%= newUserPath %>">Register</a>
+                        <a href="<%= loginPath %>">Login</a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="center_nav"> 
+                <a href="/alimentos">Alimentos</a>
+                <a href="/comidas">Comidas</a>
+                <a href="/sectores">Sectores</a>
+                <a href="/dietas">Dietas</a>
+                <a href="/FAQ">FAQ</a>
+            </div>
+        </nav>
+    </head>
+</html>

@@ -1,0 +1,40 @@
+<% if (locals.errors) { %>
+  <div class="errors">
+    You need to fix the following errors:
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+<div class="form-container">
+  <form id="form_" action="<%= submitUserPath %>" method="post" enctype="multipart/form-data">
+    <% if (!specialist.isNewRecord) { %>
+      <input type="hidden" name="_method" value="patch" />
+    <% } %>
+    <div class="row">
+      <div class="col-25">
+        <label for="profession">Profesión</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="profession" value="<%= specialist.profession %>" placeholder="Ingresa tu profesión..." required="true"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="document">Documento</label>
+      </div>
+      <div class="col-75">
+        <input type="file" name="document" required="true" value="<%= specialist.document %>" placeholder="Ingresa un documento que verifique tu profesión..."/>
+      </div>
+    </div>
+    <div class="field">
+      <% if (specialist.isNewRecord) { %>
+        <input type="submit" name="create" value="Create" id="button1"/>
+      <% } else { %>
+        <input type="submit" name="update" value="Update" id="button1"/>
+      <% } %>
+    </div>
+  </form>
+</div>

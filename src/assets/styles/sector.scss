@@ -1,0 +1,65 @@
+#map { 
+  height: auto; 
+  width: auto;
+  margin-left: 20px;
+}
+
+.coordinates {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  padding: 5px 10px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 3px;
+  display: none;
+  }
+
+.sector-form{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sector-grid-form{
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+.sector-show-grid{
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+.show-map{
+  top: 30px;
+}
+
+.sector-show-button{
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.instruction{
+  color: black;
+}
+
+.sector-text{
+  color: #95c122;
+  font-size: x-large;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+.sector-text:hover {
+  color: #f7941d;
+}
+
+.margin-20 {
+  margin: 20px 0px;
+}

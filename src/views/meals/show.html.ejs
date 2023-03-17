@@ -1,0 +1,51 @@
+<div class="meal_container">
+
+  <div class="polaroid">
+    <img src="<%= meal.image %>"/>
+    <div class="name_container">
+      <h2><%- meal.name %></h2>
+    </div>
+  </div>
+
+  <div class="receta">
+    <h3>Preparación:</h3> <p><%- meal.recipe_description %></p>
+  </div>
+
+  <div class="ingredientes">
+    <h3>Ingredientes:</h3>
+    <% if (!foodsList.length) { %>
+        <p>No results</p>
+    <% } 
+    else { %>
+      <table class="table" >
+        <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Categoría</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% foodsList.forEach((food) => { %>
+            <tr>
+              <td><%- food.name %></td>
+              <td><%- food.category %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+
+  <%- include('_info_nutricional') %>
+
+  <% if (currentUser) { %>
+  <br>
+    <div class="boton-comida">
+      <a class="button" href="<%- editMealPath(meal) %>">Editar Comida</a>
+
+      <form action="<%- deleteMealPath(meal) %>" method="POST">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="Delete" />
+    </div>
+    <% } %>
+</div>

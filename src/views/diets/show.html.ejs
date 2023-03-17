@@ -1,0 +1,38 @@
+<div class="">
+  <div class="diet_name">
+    <h2>Dieta: <%- diet.name %></h2>
+  </div>
+  <div class="diet_duration">
+    <p>Semanas de duracion: <%- diet.weeks %></p>
+  </div>
+
+  <div class="diet_observation">
+    <p>Observaciones: <%- diet.observation %></p>
+  </div>
+
+  <div class="diet_creator">
+    <img src="<%= user.image %>"/>
+    <div class="name_container">
+      <h3>creador: <%- user.username %></h3>
+    </div>
+  </div>
+
+  <div class="price">
+    <p>Costo estimado: <%- price %></p>
+  </div>
+
+  <% if (currentUser ) { %>
+    <div class="botones-diet">
+      <a class="button" href="<%- editDietPath(diet) %>">Editar</a>
+
+      <form action="<%- deleteDietPath(diet) %>" method="POST">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="Eliminar" />
+    </div>
+  <% } %>
+  
+
+  <div id="calendar" class="diet-calendar" data-mealsList='<%- JSON.stringify(mealsList) %>' 
+    data-duration='<%- diet.weeks %>'>
+  </div>
+</div>

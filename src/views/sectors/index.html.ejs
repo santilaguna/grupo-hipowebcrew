@@ -1,0 +1,45 @@
+<h2 class="form-header">Sectores</h2>
+<% if (!sectorsList.length) { %>
+  <p>No results</p>
+<% } else { %>
+
+  <div class="grid-index">
+    <% let contador = 1 %> 
+    <% sectorsList.forEach(async (sector) => { %>
+      <% contador += 1 %> 
+      <div class="item">
+        <div>
+          <a href="<%- showSectorPath(sector) %>">
+            <div class="item-image" id="<%- 'map' + contador %> " class="show-map" href="<%- showSectorPath(sector) %>"></div>
+          </a>
+        </div>
+          <a class="sector-text" href="<%- showSectorPath(sector) %>"><%- sector.name %></a>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<% if (currentUser) { %>
+<br>
+<a class="button" href="<%- newSectorPath %>">Nuevo Sector</a>
+<% } %>
+
+
+<% contador = 1 %> 
+<% sectorsList.forEach(async (sector) => { %>
+  <% contador += 1 %> 
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGdhcmNpYTkiLCJhIjoiY2tiem85cnllMWJ4cTJ2cWYxMDk5aGNidCJ9.mfWQ5isLFyk2PcC49nU81Q';
+    var lat = '<%- sector.latitude %>';
+    var long =  '<%- sector.longitude %>';
+    var map = new mapboxgl.Map({
+      container: "<%- 'map' + contador %> ",
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [long, lat],
+      zoom: 8
+    });
+    var marker = new mapboxgl.Marker()
+    .setLngLat([long, lat])
+    .addTo(map);
+  </script>
+<% });%>

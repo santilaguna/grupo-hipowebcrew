@@ -1,0 +1,79 @@
+<div class="sector-show-grid">
+  <div id="map" class="show-map"></div>
+  <div class="grid-container">
+    <div class="header">
+      <h2>Sector: <%- sector.name %></h2>
+    </div>
+    <div class="category">
+    <p>Latitud: <%- sector.latitude %></p>
+    <p>Longitud: <%- sector.longitude %></p>
+    </div>
+    <div class="table">
+    <h3>Alimentos en el sector:</h3>
+    <% if (!foodsList.length) { %>
+        <p>No results</p>
+      <% } else { %>
+        <div style="overflow-x:auto;">
+          <table class="table"  id="generic-list">
+            <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Calorias</th>
+                  <th>Grasas</th>
+                  <th>Colesterol</th>
+                  <th>Sodio</th>
+                  <th>Carbohidratos</th>
+                  <th>Proteina</th>
+                  <th>Categoria</th>
+                  <th>Precio</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+            </thead>
+            <tbody>
+              <% foodsList.forEach((food) => { %>
+                <tr>
+                  <td><%- food.name %></td>
+                  <td><%- food.calories %></td>
+                  <td><%- food.fat %></td>
+                  <td><%- food.cholesterol %></td>
+                  <td><%- food.sodium %></td>
+                  <td><%- food.carbohydrate %></td>
+                  <td><%- food.protein %></td>
+                  <td><%- food.category %></td>
+                  <td><%- food.sectorfood.price %></td>
+                  <td><a href="<%- editSectorFoodPath(food.sectorfood) %>">Editar</a></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+<div class="sector-show-button">
+  <% if (currentUser) { %>
+    <a class="button" href="<%- editSectorPath %>">Editar sector</a>
+      <form class="margin-20" action="<%- deleteSectorPath %>" method="POST">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="Eliminar sector" />
+      </form>
+    <a class="button" href="<%- newSectorFoodPath(sector) %>">Nuevo Alimento en el sector</a>
+  <% } %>
+</div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoidGdhcmNpYTkiLCJhIjoiY2tiem85cnllMWJ4cTJ2cWYxMDk5aGNidCJ9.mfWQ5isLFyk2PcC49nU81Q';
+  var lat = '<%- sector.latitude %>';
+  var long =  '<%- sector.longitude %>';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [long, lat],
+    zoom: 8
+  });
+  var marker = new mapboxgl.Marker()
+  .setLngLat([long, lat])
+  .addTo(map);
+</script>

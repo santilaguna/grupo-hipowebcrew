@@ -1,0 +1,25 @@
+  <% if (locals.errors) { %>
+  <div class="errors">
+    You need to fix the following errors:
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<div id='formMeals' data-meal='<%- JSON.stringify(meal) %>' data-newrec='<%-meal.isNewRecord%>' 
+  data-foodlist='<%- JSON.stringify(foodsList) %>' data-mealfood='<%- JSON.stringify(mealFood) %>'
+  data-path='<%= submitMealPath%>'></div>
+
+<!--<%- include('_load') %>-->
+
+
+<script>
+// As seen at: https://github.com/jquery-validation/jquery-validation
+// https://stackoverflow.com/questions/8641729/how-to-avoid-the-need-for-ctrl-click-in-a-multi-select-box-using-javascript
+// https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
+// https://stackoverflow.com/questions/18541415/moving-li-from-one-ul-to-another-jquery
+// https://desarrolloweb.com/articulos/fetch-post-ajax-javascript.html
+</script>

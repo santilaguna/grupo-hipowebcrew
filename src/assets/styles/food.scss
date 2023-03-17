@@ -1,0 +1,28 @@
+.food-column {
+  flex: 50%;
+}
+
+.food-row {
+  display: flex;
+}
+
+.food-container {
+  transform: translate(80%, 22%);
+  width: 22vw;
+  height: 35vh;
+  img {
+    object-fit: cover;
+  }
+}
+
+.food-table {
+  margin-right: 12vw;
+}
+
+.img-cover {
+  object-fit: cover;
+}
+
+.food-meals-container {
+  margin: 50px 50px;
+}

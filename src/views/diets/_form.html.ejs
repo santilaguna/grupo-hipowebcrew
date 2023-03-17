@@ -1,0 +1,17 @@
+
+<% if (locals.errors) { %>
+  <div class="errors">
+    You need to fix the following errors:
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+  <div id="diet-form" data-submitPath= "<%= submitDietPath %>" data-diet= "<%= JSON.stringify(diet) %>"
+    data-mealsList= "<%= JSON.stringify(mealsList) %>" data-isnewrecord= "<%= diet.isNewRecord %>"
+    class="form-container" >
+  </div>
+

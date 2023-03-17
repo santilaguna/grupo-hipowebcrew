@@ -1,0 +1,76 @@
+.price {
+    transform: translate(13vw, 25vh);
+    position: fixed;
+}
+
+.diet_name {
+    transform: translate(45vw, 0vh);
+    padding-bottom: 80px;
+}
+
+.diet_duration {
+    transform: translate(13vw, 29vh);
+    position: fixed;
+}
+
+.diet_observation {
+    transform: translate(13vw, 35vh);
+    position: fixed;
+}
+
+.diet_meals {
+    transform: translate(35vw, -10vh);
+    object-fit: cover;
+    width: 50%;
+    height: 50%;
+}
+
+.diet_creator {
+    position: fixed;
+    height: 23vh;
+    width: 12vw;
+    transform: translate(12vw, -8vh);
+    box-shadow: 0 0.5vh 0.5vw 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 3%;
+
+    img {
+        text-align: center;
+        position: fixed;
+        object-fit: cover;
+        border-radius: 2%;
+        height: 80%;
+        width: 100%;
+    }
+    
+    .name_container {
+        position: relative;
+        text-align: center;
+        transform: translateY(16.2vh);
+    }
+}
+
+.diet-calendar{
+    height: 50%;
+    width: 50%;
+    transform: translate(35vw, -10vh);
+    object-fit: cover;
+
+}
+
+.botones-diet{
+    position: fixed;
+    transform: translate(13vw, 45vh);
+}
+
+.diet-text-box{
+    p a { margin:0 }
+    .title-diet {
+        font-size: x-large;
+        color: #04ac54;
+    }
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+    box-shadow: 0 0.5vh 0.5vw 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 3%;
+}

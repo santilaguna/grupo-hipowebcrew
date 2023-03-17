@@ -1,0 +1,25 @@
+<h2 class="form-header">Alimentos</h2>
+<% if (!foodsList.length) { %>
+  <p>No results</p>
+<% } else { %>
+  
+  <div class="grid-index">
+    <% foodsList.forEach((food) => { %>
+      <div class="item">
+        <div>
+          <a href="<%- showFoodPath(food) %>">
+            <img class="item-image"  href="<%- showFoodPath(food) %>" src='<%- food.image %>'>
+          </a>
+        </div>
+          <a href="<%- showFoodPath(food) %>" class="item-text"><%- food.name %></a>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<br>
+<% if (currentUser) { %>
+<div class="form-header">
+  <a class="button" href="<%- newFoodPath %>">Nuevo Alimento</a>
+</div>
+<% } %>

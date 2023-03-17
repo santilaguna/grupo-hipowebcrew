@@ -1,0 +1,61 @@
+.form-container-v2 {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1.9fr;
+    grid-template-rows: 0.2fr 0.3fr;
+    gap: 1px 6px;
+    grid-template-areas: "foto fields" "foto-tag botones";
+  }
+  
+  .foto { grid-area: foto; }
+  
+  .fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.8fr 1.2fr;
+    gap: 1px 8px;
+    grid-template-areas: "nombre" "contrasena";
+    grid-area: fields;
+  }
+  
+  .nombre { grid-area: nombre; }
+  
+  .contrasena { grid-area: contrasena; }
+  
+  .foto-tag { grid-area: foto-tag; }
+  
+  .botones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "update logout";
+    grid-area: botones;
+  }
+  
+  .update { grid-area: update; }
+  
+  .logout { grid-area: logout; }
+  
+  .profile-pic {
+    width: 300px;
+    height: 300px;
+    object-fit:cover;
+    border-radius:50%;
+  }
+
+.field{
+  width: 60%;
+}
+
+.error{
+  padding: 25px;
+}
+
+.notice{
+  padding: 25px;
+}

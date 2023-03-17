@@ -1,0 +1,62 @@
+<div class="info_nutricional">
+    <h3>Información Nutricional</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Información Nutricional</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr> 
+            <td>
+                Calorías
+            </td>
+            <td>
+                <%- foodsList.reduce((a, b) => a + b.calories, 0) %>
+            </td> 
+            </tr>
+            <tr>  
+            <td>
+                Grasas
+            </td>
+            <td>
+                <%- foodsList.reduce((a, b) => a + b.fat, 0) %>
+            </td> 
+            </tr>
+            <tr>  
+            <td>
+                Colesterol
+            </td>
+            <td>
+                <%- foodsList.reduce((a, b) => a + b.cholesterol, 0) %>
+            </td> 
+            </tr>
+            <tr>  
+            <td>
+                Sodio
+            </td>
+            <td>
+                <%- foodsList.reduce((a, b) => a + b.sodium, 0) %>
+            </td> 
+            </tr>
+            <tr>  
+            <td>
+                Carbohidratos
+            </td>
+            <td>
+                <%- foodsList.reduce((a, b) => a + b.carbohydrate, 0) %>
+            </td> 
+            </tr>
+            <tr>  
+            <td>
+                Proteínas
+            </td>
+            <td>
+                <%- foodsList.reduce((a, b) => a + b.protein, 0) %>
+            </td> 
+            </tr>
+        </tbody>
+    </table>
+</div>

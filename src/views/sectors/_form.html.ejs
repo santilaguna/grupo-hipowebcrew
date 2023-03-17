@@ -1,0 +1,146 @@
+<% if (locals.errors) { %>
+  <div class="errors">
+    You need to fix the following errors:
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+    
+<div class="sector-grid-form">
+  <div id="map"></div>
+
+  <div class="sector-form">
+    <form id="form1" action="<%= submitSectorPath %>" method="post">
+      <% if (!sector.isNewRecord) { %>
+        <input type="hidden" name="_method" value="patch" />
+      <% } %>
+      <div class="row">
+        <div class="col-25">
+          <label for="name">Nombre</label>
+        </div>
+        <div class="col-75">
+          <input type="text" name="name" value="<%= sector.name %>"placeholder="Ingresa el nombre..."/>
+        </div>
+      </div>
+      <div class="row">
+        <p class="instruction">Mueve el marcador para ingresar tu ubicación</p>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="latitude">Latitud</label>
+        </div>
+        <div class="col-75">
+          <input oninput="updateLat()" type="number" step="any" name="latitude" id="lat" value="<%= sector.latitude || -70.6547579208 %>"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="longitude">Longitud</label>
+        </div>
+          <div class="col-75">
+            <input oninput="updateLong()" type="number" step="any" name="longitude" id="long" value="<%= sector.longitude || -33.44200543 %>" />
+          </div>
+      </div>
+      <div class="field">
+        <% if (sector.isNewRecord) { %>
+          <input type="submit" name="create" value="Crear" id="button1"/>
+        <% } else { %>
+          <input type="submit" name="update" value="Actualizar" id="button1"/>
+        <% } %>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoidGdhcmNpYTkiLCJhIjoiY2tiem85cnllMWJ4cTJ2cWYxMDk5aGNidCJ9.mfWQ5isLFyk2PcC49nU81Q';
+  var long = '<%= sector.longitude %>' || -70.6547579208;
+  var lat = '<%= sector.latitude %>' || -33.44200543;
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [long, lat],
+    zoom: 7
+  });
+ 
+  var marker = new mapboxgl.Marker({
+    draggable: true
+  })
+    .setLngLat([long, lat])
+    .addTo(map);
+    
+  function onDragEnd() {
+    var lngLat = marker.getLngLat();
+    var longElement = document.getElementById('long');
+    var latElement = document.getElementById('lat');
+    longElement.value = lngLat.lng;
+    long = lngLat.lng;
+    latElement.value = lngLat.lat;
+    lat = lngLat.lat;
+  };
+ 
+  marker.on('dragend', onDragEnd);
+
+  function updateLat() {
+    var latElement = document.getElementById('lat');
+    lat = latElement.value;
+    marker.setLngLat([long, lat]);
+    map.flyTo({
+      center: [long, lat],
+    });
+  };
+
+  function updateLong(){
+    var longElement = document.getElementById('long');
+    long = longElement.value;
+    marker.setLngLat([long, lat]);
+    map.flyTo({
+      center: [long, lat],
+    });
+  };
+
+</script>
+
+<script>
+  // As seen at: https://github.com/jquery-validation/jquery-validation
+ 
+  $('#button1').click(function(){  
+      $("#form1").validate({
+          rules: {
+              name: {
+                  required: true,
+                  minlength: 3
+              },
+              latitude: {
+                  required: true,
+                  min: -90.0,
+                  max: 90.0
+              },
+              longitude: {
+                  required: true,
+                  min: -180.0,
+                  max: 180.0
+              }
+          },
+          messages: {
+              name: {
+                  required: "Por favor, ingresa un nombre para el sector",
+                  minlength: "El largo mínimo es 3"
+              },
+              latitude: {
+                  required: "Por favor, ingresa una latitud",
+                  min: "Latitud muy pequeña ('-90 min')",
+                  max: "Latitud muy grande (90 max)"
+              },
+              longitude: {
+                  required: "Por favor, ingresa la longitud",
+                  min: "Longitud muy pequeña ('-180 min')",
+                  max: "Longitud muy grande (180 max)"
+              }
+          }
+      });
+  }); 
+</script>

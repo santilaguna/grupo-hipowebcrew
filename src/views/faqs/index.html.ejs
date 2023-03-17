@@ -1,0 +1,69 @@
+<section class="faq">
+  <h1>FAQ</h1>
+  <container class="faq_container">
+
+    <button class="accordion"><h2>¿Que es NutriCheap?</h2></button>
+
+    <div class="panel">
+      <p>NutriCheap es una aplicacion en la que puedes encontrar las dietas que mas se acomoden a lo que buscas
+        y ademas, si eres un profesional, puedes sugerir dietas para que los demas las puedan seguir.
+      </p>
+    </div>
+
+    <button class="accordion"><h2>¿Como puedo registrarme en NutriCheap?</h2></button>
+
+    <div class="panel">
+      <p>Para registrarte solamente debes hacer click en el boton "register", el proceso es totalmente gratuito.</p>
+    </div>
+
+    <button class="accordion"><h2>¿Como puedo agregar un nuevo alimento a la pagina?</h2></button>
+
+    <div class="panel">
+      <p>Simplemente debes hacer click en la pestaña de alimentos y podras crear alimentos.</p>
+    </div>
+
+    <button class="accordion"><h2>¿Como puedo agregar una nueva comida?</h2></button>
+
+    <div class="panel">
+      <p>Simplemente debes hacer click en la pestaña de comidas y podras crear nuevas comidas a partir de los alimentos existentes.</p>
+    </div>
+
+    <button class="accordion"><h2>¿Como puedo agregar el precio de un alimento?</h2></button>
+
+    <div class="panel">
+      <p>Para esto primero debes buscar el sector en donde ese alimento vale ese precio (si el sector no existe lo puedes agregar)
+        y dentro del sector puedes añadir el precio del alimento.</p>
+    </div>
+
+    <button class="accordion"><h2>¿Como puedo añadir una dieta para la comunidad?</h2></button>
+
+    <div class="panel">
+      <p>Para esto necesitas ser un especialista, y al serlo, para crear una dieta debes hacer click en la pestaña de dietas
+        y añadir una con las comidas existentes.</p>
+    </div>
+
+    <button class="accordion"><h2>¿Como certifico que soy especialista?</h2></button>
+
+    <div class="panel">
+      <p>Al estar registrado puedes hacer click en el boton "ser especialista" y mandar los documentos para demostrar
+        que eres especialista.</p>
+    </div>
+
+  </container>
+</section>
+  <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+      
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          } 
+        });
+      }
+  </script>

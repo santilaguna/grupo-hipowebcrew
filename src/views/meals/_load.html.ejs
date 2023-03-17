@@ -1,0 +1,48 @@
+<% if (meal.isNewRecord) { %>
+    <script>
+      var foodsList = '<%- JSON.stringify(foodsList)%>'
+      JSON.parse(foodsList).forEach(element => {
+      // hidden select
+      const sel = document.getElementById('foods');
+      const opt = document.createElement('option');
+      opt.appendChild( document.createTextNode(element.name) );
+      opt.value = element.id; 
+      sel.appendChild(opt);
+      // list
+      const second_list = document.getElementById('list2');
+      const new_item = document.createElement('li');
+      new_item.appendChild( document.createTextNode(element.name) );
+      second_list.appendChild(new_item);
+    });
+    </script>
+    <% } else { %>
+      <script>
+        const foodsList = '<%- JSON.stringify(foodsList)%>'
+        const mealFood = '<%- JSON.stringify(mealFood)%>'
+        const first_list = document.getElementById('list1');
+        const second_list = document.getElementById('list2');
+        const sel = document.getElementById('foods');
+        JSON.parse(foodsList).forEach(element => {
+          const opt = document.createElement('option');
+          opt.appendChild( document.createTextNode(element.name) );
+          opt.value = element.id;
+
+          let selected = false;
+          for(var i = 0; i < JSON.parse(mealFood).length; i++)
+          {
+            if (element.id == JSON.parse(mealFood)[i].id)
+            {
+              opt.selected = true;
+              selected =  true;
+              break;
+            }
+          } 
+          sel.appendChild(opt);
+
+          const new_item = document.createElement('li');
+          new_item.appendChild( document.createTextNode(element.name) );
+          if (selected) { first_list.appendChild(new_item); }
+          else { second_list.appendChild(new_item); }
+        });
+      </script>
+    <% } %>

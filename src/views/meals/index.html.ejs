@@ -1,0 +1,22 @@
+<h2 class="form-header">Comidas</h2>
+<% if (!mealsList.length) { %>
+  <p>No results</p>
+<% } else { %>
+
+  <div class="grid-index">
+    <% mealsList.forEach(async (meal) => { %>
+      <div class="item">
+        <div>
+          <a href="<%- showMealPath(meal) %>">
+            <img class="item-image" href="<%- showMealPath(meal) %>" src='<%- meal.image %>'>
+          </a>
+        </div>
+          <a href="<%- showMealPath(meal) %>" class="item-text"><%- meal.name %></a>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+<br>
+<% if (currentUser) { %>
+<a class="button" id="bottom-button" href="<%- newMealPath %>">Nueva comida</a>
+<% } %>

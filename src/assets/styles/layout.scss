@@ -1,0 +1,361 @@
+$containerColor:#95c122;
+$redirectColor:#95c122;
+$inputColor:white;
+$textColor: #04ac54; 
+$loginColor: rgb(3, 73, 1);
+$loginHoverColor: #019e09;
+
+html{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: white;
+  background-attachment: scroll;
+  background-size: 100%;
+  //background: #95c122;//rgb(106,203,164);
+  //linear-gradient(90deg, rgba(106,203,164,1) 13%, rgba(36,178,182,1) 35%, rgba(0,51,51,1) 100%);//#95c122
+  //background: linear-gradient(90deg, #ff4984 13%, #ff84ab 35%, rgba(36,178,182,1) 100%);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: $textColor;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+nav{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: verdana;
+  padding: none;
+  background-color: transparent;
+  overflow: hidden;
+  display: block;
+  .logo {
+      display: block;
+      max-width: 17vw;
+      margin-top: 1%;
+      transition: 1s ease;
+      transform: translate(1%);
+  }
+  .logo:hover {
+    transform: translate(5%);
+    transition: 1s ease;
+    }
+  a {
+    float: left;
+    padding: 4vh 2vw;
+    color: $redirectColor;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2vw;
+  }
+  .login {
+    float: right;
+    a {
+      color: $loginColor;
+    }
+    a:hover {
+      color: $loginHoverColor;
+    }
+  }
+  .center_nav {
+    // source: https://www.w3schools.com/howto/howto_css_topnav_centered.asp
+    float: none;
+    transform: translate(9%);
+    margin-top: 1%;
+    a {
+      font-size: 1.4vw;
+    }
+  }
+  a:hover{
+    //text-decoration: underline;
+    color: #f7941d;
+  }
+}
+
+input[type=text]{
+  width: 100%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: $inputColor;
+}
+textarea{
+  background-color: $inputColor;
+  height: 150px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: $inputColor;
+  font-size: 14px;
+  font-family: system;
+}
+input[type=number], input[type=email], input[type=password] {
+  background-color: $inputColor;
+}
+input[type=password], input[type=email]{
+  width: 100%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: $inputColor;
+}
+
+select {
+  width: auto;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: $inputColor;
+}
+
+input[type=button], input[type=submit], input[type=reset], a[class=button]{
+  background-color: $containerColor;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  margin: 10px 2px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  //margin-bottom: 10px;
+  //margin-left: 50px;
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    text-decoration: none;
+    a{
+      text-decoration: none;
+    }
+  }
+  tr:nth-child(even){background-color: lighten(#95c122,10)}
+
+  th {
+    background-color: $containerColor;
+    color: black;
+  }
+}
+
+
+
+.homepage {
+  width: 100%;
+  height: 10%;
+}  
+
+body{
+  margin: 0px;
+  overflow-x: hidden;
+}
+
+.top-center {
+    text-align: center;
+    position: relative;
+    transform: translate(-7%, -10%);
+}
+
+.header { grid-area: header;}
+.image { grid-area: image; }
+.table { grid-area: table; }
+.category { grid-area: categoria; }
+.price { grid-area: precio; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header'
+    'categoria precio  image image'
+    'table table table table'
+    'table table table table';
+  grid-gap: 10px;
+  padding: 25px;
+}
+
+.footer{
+  padding: 25px;
+}
+
+.form-container{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.form-header{
+  margin-left: 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+::-webkit-scrollbar { // source: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_scrollbar
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.accordion {
+  background-color: #95c122;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 18px;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  height: 8vh;
+  width: 80vw;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: #95c12269;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.faq h1
+{
+  text-align: center;
+}
+
+.faq h2
+{
+  color: black;
+}
+
+.faq p
+{
+  color: black;
+  text-align: center;
+}
+
+.faq_container{
+  position:fixed;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-top: 2vh;
+}
+
+.grid-index {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-gap: 3%;
+  grid-row-gap: 4%;
+  grid-auto-flow: row;
+  .item-text{
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: black;
+  }
+  .item-image{
+    width: 100%;
+    height: 100%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    display:block;
+    margin:auto;
+  }
+
+}
+
+.grid-container-v2 {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1.3fr 1.6fr;
+  grid-template-rows: 0.1fr 0.4fr;
+  gap: 1px 3px;
+  grid-template-areas: "Categoria ." "Nombre Imagen";
+}
+
+.Categoria { grid-area: Categoria; }
+
+.Nombre {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 1px 1px;
+  grid-template-areas: "." "Tabla";
+  grid-area: Nombre;
+}
+
+.Tabla { grid-area: Tabla; }
+
+.Imagen { grid-area: Imagen; }
+
+.Imagen img{
+  width: 100%;
+  display:block;
+  margin:auto;
+}
+
+.padding-25 {
+  padding: 25px;
+}
+
+.img-fixed {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}

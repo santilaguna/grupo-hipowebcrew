@@ -1,0 +1,91 @@
+<% if (locals.errors) { %>
+  <div class="errors">
+    You need to fix the following errors:
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<div class="form-container">
+<form id="form_" action="<%= submitFoodPath %>" method="post" enctype="multipart/form-data">
+  <% if (!food.isNewRecord) { %>
+    <input type="hidden" name="_method" value="patch" />
+  <% } %>
+
+  <div class="campo">
+    <div class="col-25">
+      <label for="name">Nombre</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="name" value="<%= food.name %>" placeholder="Ingresa el nombre..."/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <img src="<%= food.image %>">
+    </div>
+    <div class="col-75">
+      <input type="file" name="image" value="<%= food.image %>" placeholder="Ingresa una imagen del alimento..."/>
+    </div>
+  </div>
+  <div class="campo">
+    <div class="col-25">
+      <label for="calories">Calorias</label>
+      <input type="number" name="calories" value="<%= food.calories %>"/>
+    </div>
+  </div>
+  <div class="campo">
+    <div class="col-25">
+      <label for="fat">Grasa</label>
+      <input type="number" name="fat" value="<%= food.fat %>"/>
+    </div>
+  </div>
+  <div class="campo">
+    <div class="col-25">
+      <label for="cholesterol">Colesterol</label>
+      <input type="number" name="cholesterol" value ="<%=food.cholesterol %>"/>
+    </div>
+  </div>
+  <div class="campo">
+    <div class="col-25">
+      <label for="sodium">Sodio</label>
+      <input type="number" name="sodium" value= "<%= food.sodium %>"/>
+    </div>
+  </div>
+  <div class="campo">
+    <div class="col-25">
+      <label for="carbohydrate">Carbohidratos</label>
+      <input type="number" name="carbohydrate" value = "<%= food.carbohydrate %>"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="protein">Proteinas</label>
+      <input type="number" name="protein" value="<%= food.protein %>"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="category">Categoria</label>
+    </div>
+    <div class="col-75">
+      <select name="category" id="category">
+        <option value="Leche">Leche y derivados</option>
+        <option value="Carne">Carnes</option>
+        <option value="Verdura">Verduras</option>
+        <option value="Fruta">Frutas</option>
+      </select>
+    </div>
+  </div>
+  <div class="campo">
+    <% if (food.isNewRecord) { %>
+      <input type="submit" name="create" value="Crear" id="button1"/>
+    <% } else { %>
+      <input type="submit" name="update" value="Actualizar" id="button1"/>
+    <% } %>
+  </div>
+</form>
+</div>

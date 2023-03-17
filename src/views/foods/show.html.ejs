@@ -1,0 +1,101 @@
+<div class="food-row"> 
+  <div class="food-column"> 
+    <div class="item food-container">
+      <div>
+        <img class="item-image" src='<%- food.image %>'>
+      </div>
+      <h1 class="item-text"><%- food.name %></h1>
+    </div>
+  </div>
+  <div class="food-column food-table"> 
+    <h3>Categoria: <%- food.category %></h3>
+    <h3>Información nutricional</h3>
+    <table class="table">
+        <tr>
+          <td>Calorias</td>
+          <td><%- food.calories %></td>
+        </tr>
+        <tr>
+          <td>Grasas</td>
+          <td><%- food.fat %></td>
+        </tr>
+        <tr>
+          <td>Carbohidratos</td>
+          <td><%- food.carbohydrate %></td>
+        </tr>
+        <tr>
+          <td>Proteina</td>
+          <td><%- food.protein %></td>
+        </tr>
+        <tr>
+          <td>Colesterol</td>
+          <td><%- food.cholesterol %></td>
+        </tr>
+        <tr>
+          <td>Sodio</td>
+          <td><%- food.sodium %></td>
+        </tr>
+    </table>
+  </div>
+</div>
+
+<div class="padding-25 food-meals-container">
+  <h3>Comidas en las que esta incluido:</h3>
+  <% if (!mealsList.length) { %>
+    <p>No results</p>
+  <% } else { %>
+
+    <div class="grid-index">
+      <% mealsList.forEach(async (meal) => { %>
+        <div class="item">
+          <div>
+            <a href="<%- showMealPath(meal) %>">
+              <img class="item-image" href="<%- showMealPath(meal) %>" src='<%- meal.image %>'>
+            </a>
+          </div>
+            <a href="<%- showMealPath(meal) %>" class="item-text"><%- meal.name %></a>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+
+  <h3>Precio por Sector:</h3>
+  <% if (!sectorList.length) { %>
+    <p>No hay precios registrados.</p>
+  <% } else { %>
+    <div class="">
+
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre Sector</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <% sectorList.forEach(async (sector) => { %>
+        <tr>
+          <td><%- sector.name %></td>
+          <td><%- sector.sectorfood.price %></td>
+        </tr>
+        <% }) %>
+      </table>
+    </div>
+  <% } %>
+   
+  <br>
+  <% if (currentUser) { %>
+  <a class="button" href="<%- newPricePath(food) %>">Agregar Precio</a>
+
+  <a class="button" href="<%- editFoodPath(food) %>">Editar Alimento</a>
+
+  <form action="<%- deleteFoodPath(food) %>" method="POST">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" value="Delete" />
+  </form>
+  <% } %>
+
+
+</div>
+

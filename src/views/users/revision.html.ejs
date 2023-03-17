@@ -1,0 +1,36 @@
+<h2>Solicitudes de especialista</h2>
+<% if (!usersList.length) { %>
+  <p>No results</p>
+<% } else { %>
+  <div style="overflow-x:auto;">
+    <table class="table"  id="generic-list">
+      <thead>
+          <tr>
+            <th>Nombre de usuario</th>
+            <th>Email</th>
+            <th>Profesion</th>
+            <th>Documento</th>
+            <th></th>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody>
+        <% usersList.forEach((user) => { %>
+          <tr>
+            <td><%- user.username %></td>
+            <td><%- user.email %></td>
+            <td><%- user.profession %></td>
+            <td><a href="<%- user.document %>">Certificado</a></td>
+            <td>
+                <form action="<%- acceptSpecialistPath(user) %>" method="POST">
+                  <input type="hidden" name="_method" value="post" />
+                  <input type="submit" value=Aceptar />
+                </form>
+              </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+

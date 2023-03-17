@@ -1,0 +1,56 @@
+<% if (locals.errors) { %>
+    <div class="errors">
+      You need to fix the following errors:
+      <ul>
+        <% errors.forEach(error => { %>
+          <li><%= error.message %></li>
+        <% }); %>
+      </ul>
+    </div>
+  <% } %>
+  
+  <div class="form-container">
+    <form action="<%= submitPricePath %>" method="post">
+      <% if (!sectorfood.isNewRecord) { %>
+        <input type="hidden" name="_method" value="patch" />
+      <% } %>
+      <% if (sectorfood.isNewRecord) { %>
+      <div class="campo">
+        <div class="col-25">
+          <label for="sector">Selecciona el alimento de la zona:</label>
+        </div>
+        <div class="col-75">
+          <select id="sector" name="sector">
+            <script>
+              var sectorList = '<%- JSON.stringify(sectorList)%>'
+              JSON.parse(sectorList).forEach(element => {
+              var sel = document.getElementById('sector');
+              var opt = document.createElement('option');
+              opt.appendChild( document.createTextNode(element.name) );
+              opt.value = element.id; 
+              sel.appendChild(opt);
+            });
+            </script>
+          </select>
+        </div>
+      </div>
+      <% } %>
+  
+      <div class="row">
+        <div class="col-25">
+          <label for="precio">Precio</label>
+        </div>
+        <div class="col-75">
+          <br>
+            <input type="number" name="price" value="<%= sectorfood.price %>" />
+        </div>
+      </div>
+      <div class="field">
+        <% if (sectorfood.isNewRecord) { %>
+          <input type="submit" name="create" value="Crear" />
+        <% } else { %>
+          <input type="submit" name="update" value="Actualizar" />
+        <% } %>
+      </div>
+    </form>
+  </div>
